@@ -1,0 +1,42 @@
+#  from sklearn.neighbors import NearestNeighbors
+
+Documents
+1. https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html
+2. https://towardsdatascience.com/a-simple-introduction-to-k-nearest-neighbors-algorithm-b3519ed98e
+
+
+
+Parameters:
+1. n_neighbors: int, default=5
+
+Number of neighbors to use.
+
+To find the optimal k value: By deriving a plot between error rate. Then choose the K value as having a minimum error rate.
+
+2. algo:
+a) Auto: it best the best approach/algo for the problem
+D=dimension
+N= number of points
+b) brute-force computation of distances between all pairs of points in the dataset: complexity: O(D*N*N)
+For small data sets, Brute Force is justifiable, however, for increasing data the KD or Ball Tree is better alternatives due to their speed and efficiency.
+
+c) KD Tree:the KD Tree Algorithm (O(D*log(N))might be the best solution. As seen above, the node divisions of the KD Tree are axis-aligned and cannot take a different shape. So the distribution might not be correctly mapped, leading to poor performance.
+
+d) Ball Tree: For a high-dimensional space, the Ball Tree(O(D*log(N)) Algorithm might be the best solution. Its performance depends on the amount of training data, the dimensionality, and the structure of the data. Having many data points that are noise can also lead to a bad performance due to no clear structure.
+
+
+3) P - pairwise distance =1 Manhattan 2 Euclidean, any other value is minkowski(value)
+
+-Euclidean- should be used whenever we are comparing observations which features are continuous, numeric variables like height, weight, or salaries for example.
+-Manhattan-Manhattan distance when the features of our observations are entire integers (1,2,3,4…) with no decimal parts
+
+4) Leaf size is for BallTree and KDTree. It affects the speed and memory used. Larger size means more time and memory will require with better accuracy but it may lead to overfitting
+5) n_jobs: int, default=None
+The number of parallel jobs to run for neighbors search.
+
+6) radius: Find the neighbors within a given radius of a point or points. Return the indices and distances of each point from the dataset lying in a ball with size ``radius`` around the points of the query array. Points lying on the boundary are included in the results.
+
+7) metric: It can be a string or callable function, default=’minkowski’ with p= 2.
+8) metric_params: dict, default=None
+Additional keyword arguments for the metric function.
+When using different metric systems the additional parameters are to be given through this parameter.
